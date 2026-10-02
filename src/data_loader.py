@@ -25,7 +25,7 @@ def load_dataset(data_path,indices=None):
             datetimes_raw=f["datetimes"][:]
         
         ship_info={}
-        for field in f["ship_info"].dtype.names:
+        for field in f["ship_info"].keys():
             ship_info[field]=f["ship_info"][field][indices] if indices is not None else f["ship_info"][field][:]      
     return X,y_distance,datetimes_raw,ship_info
 
