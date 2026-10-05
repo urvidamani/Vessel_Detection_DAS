@@ -52,3 +52,23 @@ def create_binary_label(y_distance,threshold=1000):
     """
     y_binary=(y_distance<threshold).astype(np.float32)
     return y_binary
+
+def load_subset_by_days(data_path, days_list):
+    """
+    Loads only the specific calender days with faulty channels already removed.
+    """
+    import h5py
+    with h5py.File(data_path,"r") as f:
+        datetimes_raw_all=f["datetimes"][:]
+    
+    datetimes_all=decode_datetimes(datetimes_raw_all)
+    days_all=datetimes_all.date
+    
+    target_days=[pd.to_datetime(d).date() for d in days_list]
+    mask=np.isin(days_all,target_days)
+    indices=np.where(mask)[0]
+    
+    X,y_distance,datetimes_raw,ship_info=load_dataset(data_path,indices=indices)
+    X_clean,good_channels=remove_faulty_channels(X)
+    
+    return X_clean,y_distance,datetimes_raw,ship_info,good_channels
