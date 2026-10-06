@@ -1,4 +1,7 @@
 aiml_ev312/
+aiml__ev/
 __pycache__/
-*.pyc
+*.h5
+*.pth
+*.pkl
 .ipynb_checkpoints/
