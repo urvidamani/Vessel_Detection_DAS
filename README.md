@@ -4,7 +4,6 @@ Can a neural network hear a ship through an underwater cable?
 
 This project uses fibre-optic sound recordings (Distributed Acoustic Sensing, DAS) to decide whether a vessel is within **1,000 m** of a submarine cable, and to estimate how far away it is. It is built in PyTorch and tested on days the model has never seen.
 
-COMP 5064 Programming in AIML 2, University of Adelaide, 2026. Author: Urvi Damani.
 
 ---
 
